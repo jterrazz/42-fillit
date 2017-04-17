@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jterrazz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/17 16:15:17 by jterrazz          #+#    #+#             */
-/*   Updated: 2017/04/17 16:31:20 by jterrazz         ###   ########.fr       */
+/*   Created: 2017/04/17 14:06:45 by jterrazz          #+#    #+#             */
+/*   Updated: 2017/04/17 15:57:29 by jterrazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		is_piece(char *str)
-{
-	int nb_hash;
-	int nb_char_valid;
-	int i;
+#ifndef FILLIT_H
+# define FILLIT_H
 
-	nb_hash = 0;
-	nb_char_valid = 0;
-	while(nb_char_valid < 20)
-	{
-		i = 0;)
-		if (str[i] == '.' || str [i] == '#')
-			i++;
-		else if (str[i] == '\n' && i == 4)
-			i = 0;
-		else
-			return (NULL);
-		nb_char_valid++;
-	}
-}
+# include "../libft/libft.h"
+# include <unistd.h>
+# include <fcntl.h>
 
-int		ft_check_input()
-{
-	
-}
+void	ft_usage(void);
+char	*ft_get_input(char *filename);
+
+#endif
