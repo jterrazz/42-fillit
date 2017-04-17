@@ -6,7 +6,7 @@
 /*   By: jterrazz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 16:15:17 by jterrazz          #+#    #+#             */
-/*   Updated: 2017/04/17 17:20:59 by jterrazz         ###   ########.fr       */
+/*   Updated: 2017/04/17 17:42:56 by jterrazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,10 @@ int				ft_check_input(char *input)
 {
 	// check error hashtag alone
 	int i;
+	int len;
 
 	i = 0;
+	len = ft_strlen(input);
 	while (input[i])
 	{
 		if (i % 21 == 0)
@@ -75,9 +77,12 @@ int				ft_check_input(char *input)
 		}
 		else if (i % 21 == 20)
 		{
+			if (input[i] == '\n' && i == len - 1)
+				return (0);
 			if (input[i] != '\n')
 				return (0);
 		}
+		i++;
 	}
 	return (1);
 }
