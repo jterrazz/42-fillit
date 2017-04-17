@@ -6,14 +6,14 @@
 #    By: jterrazz <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/17 14:21:01 by jterrazz          #+#    #+#              #
-#    Updated: 2017/04/17 16:13:16 by jterrazz         ###   ########.fr        #
+#    Updated: 2017/04/17 19:04:56 by jterrazz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 
 SRC = src/fillit.c src/printer.c src/reader.c src/checker.c \
-	  src/error.c
+	  src/error.c src/resolver.c
 
 LIBFILES = ft_lstiter.c ft_putendl.c ft_striter.c ft_strequ.c\
 	ft_lstmap.c ft_putendl_fd.c ft_striteri.c ft_strrchr.c \

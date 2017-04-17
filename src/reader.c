@@ -6,7 +6,7 @@
 /*   By: jterrazz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 15:54:14 by jterrazz          #+#    #+#             */
-/*   Updated: 2017/04/17 16:06:51 by jterrazz         ###   ########.fr       */
+/*   Updated: 2017/04/17 18:32:53 by jterrazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ char	*ft_get_input(char *filename)
 		ft_putstr("Ptn ca c'est de la gestion derreur");
 		return (NULL);
 	}
+	close(fd);
 	return (input);
 }

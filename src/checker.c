@@ -6,7 +6,7 @@
 /*   By: jterrazz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 16:15:17 by jterrazz          #+#    #+#             */
-/*   Updated: 2017/04/17 17:42:56 by jterrazz         ###   ########.fr       */
+/*   Updated: 2017/04/17 17:46:11 by jterrazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ static int		is_piece(char *str)
 
 int				ft_check_input(char *input)
 {
-	// check error hashtag alone
 	int i;
 	int len;
 

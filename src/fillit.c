@@ -6,7 +6,7 @@
 /*   By: jterrazz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 14:05:46 by jterrazz          #+#    #+#             */
-/*   Updated: 2017/04/17 17:25:31 by jterrazz         ###   ########.fr       */
+/*   Updated: 2017/04/17 17:47:28 by jterrazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int main(int argc, char **argv)
 			ft_putstr("error\nblyat");
 			return (0);
 		}
+		if (!ft_resolver(input))
+			return (0);
 	}
 	else
 		ft_usage();
