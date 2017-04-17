@@ -6,7 +6,7 @@
 /*   By: jterrazz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 14:06:45 by jterrazz          #+#    #+#             */
-/*   Updated: 2017/04/17 15:57:29 by jterrazz         ###   ########.fr       */
+/*   Updated: 2017/04/17 17:13:00 by jterrazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@
 
 void	ft_usage(void);
 char	*ft_get_input(char *filename);
-
+int		ft_check_input(char *input);
 #endif
