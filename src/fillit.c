@@ -6,7 +6,7 @@
 /*   By: jterrazz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 14:05:46 by jterrazz          #+#    #+#             */
-/*   Updated: 2017/04/18 19:05:41 by jterrazz         ###   ########.fr       */
+/*   Updated: 2017/04/18 19:58:36 by jterrazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 			return (0);
 		if (!ft_check_input(input))
 		{
-			ft_putstr("error\nblyat");
+			ft_putstr("error\n");
 			return (0);
 		}
 		if (!ft_resolver(input))

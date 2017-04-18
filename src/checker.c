@@ -6,7 +6,7 @@
 /*   By: jterrazz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 16:15:17 by jterrazz          #+#    #+#             */
-/*   Updated: 2017/04/18 19:14:09 by jterrazz         ###   ########.fr       */
+/*   Updated: 2017/04/18 20:03:36 by jterrazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ int				ft_check_input(char *input)
 
 	i = 0;
 	len = ft_strlen(input);
+	if (len == 0)
+		return (0);
 	while (input[i])
 	{
 		if (i % 21 == 0)
