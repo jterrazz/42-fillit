@@ -6,7 +6,7 @@
 /*   By: jterrazz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 16:15:17 by jterrazz          #+#    #+#             */
-/*   Updated: 2017/04/17 17:46:11 by jterrazz         ###   ########.fr       */
+/*   Updated: 2017/04/18 19:11:51 by jterrazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,20 @@ static int		hash_is_valid(char *str, int i)
 {
 	int x;
 	int y;
+	int count;
 
+	count = 0;
 	x = i % 5;
 	y = i / 5;
 	if (x != 0 && str[i - 1] == '#')
-		return (1);
-	else if (x != 3 && str[i + 1] == '#')
-		return (1);
-	else if (y != 0 && str[i - 5] == '#')
-		return (1);
-	else if (y != 3 && str[i + 5] == '#')
-		return (1);
-	return (0);
+		count++;
+	if (x != 3 && str[i + 1] == '#')
+		count++;
+	if (y != 0 && str[i - 5] == '#')
+		count++;
+	if (y != 3 && str[i + 5] == '#')
+		count++;
+	return (count);
 }
 
 static int		is_piece(char *str)
@@ -35,16 +37,21 @@ static int		is_piece(char *str)
 	int nb_hash;
 	int k;
 	int i;
+	int nb_next;
+	int temp;
 
 	nb_hash = 0;
 	i = 0;
 	k = 0;
+	nb_next = 0;
 	while(k < 20)
 	{
 		if (str[k] == '#')
 		{
-		   	if(!hash_is_valid(str, k))
+		   	temp = hash_is_valid(str, k);
+			if (temp == 0)
 				return (0);
+			nb_next += temp;
 			nb_hash++;
 		}
 		if (str[k] == '.' || str[k] == '#')
@@ -55,7 +62,7 @@ static int		is_piece(char *str)
 			return (0);
 		k++;
 	}
-	if (nb_hash != 4)
+	if (nb_hash != 4 || nb_next < 6)
 		return (0);
 	return (1);
 }
