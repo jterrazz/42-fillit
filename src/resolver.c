@@ -6,7 +6,7 @@
 /*   By: jterrazz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 17:45:34 by jterrazz          #+#    #+#             */
-/*   Updated: 2017/04/18 19:58:21 by jterrazz         ###   ########.fr       */
+/*   Updated: 2017/04/18 21:15:47 by jterrazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,15 +138,36 @@ int				ft_place(t_map *map, t_case *piece, int i_map)
 	return (1);
 }
 
-void	ft_clean(t_map *map, char c)
+//void	ft_clean(t_map *map, char c)
+//{
+//	int i;
+//
+//	i = 0;
+//	while (map->map[i])
+//	{
+//		if (map->map[i] == c)
+//			map->map[i] = '.';
+//		i++;
+//	}
+//}
+
+void	ft_clean(t_map *map, t_case *piece, int i_map)
 {
+	int x_map;
+	int y_map;
 	int i;
+	int x;
+	int y;
 
 	i = 0;
-	while (map->map[i])
+	x_map = i_map % map->size;
+	y_map = i_map / map->size;
+	while (i < 4)
 	{
-		if (map->map[i] == c)
-			map->map[i] = '.';
+		x = x_map + piece[i].x;
+		y = y_map + piece[i].y;
+		if (map->map[x + y * map->size] == piece[0].letter)
+			map->map[x + y * map->size] = '.';
 		i++;
 	}
 }
@@ -166,10 +187,23 @@ void			ft_put_pieces(t_map *map, t_pieces *pieces, int nb_pieces, int *sol_found
 	{
 		if (ft_place(map, pieces->pieces[nb_pieces], i_map)) // Renvois 0 si pas possible
 			ft_put_pieces(map, pieces, nb_pieces + 1, sol_found);
-		if (!(*sol_found))
-			ft_clean(map, pieces->pieces[nb_pieces][0].letter);
+		if (*sol_found == 0)
+			ft_clean(map, pieces->pieces[nb_pieces], i_map);
+		//	ft_clean(map, pieces->pieces[nb_pieces][0].letter);
 		i_map++;
 	}
+}
+
+int				ft_sqrt(int n)
+{
+	int i;
+
+	i = 1;
+	if (n == 1)
+		return (1);
+	while (i * i < n)
+		i++;
+	return (i - 1);
 }
 
 int				ft_resolver(char *input)
@@ -179,11 +213,10 @@ int				ft_resolver(char *input)
 	int			sol_found;
 	int			map_size;
 
-	map_size = 2;	
 	sol_found = 0;
 	if (!(pieces = ft_get_pieces(input)))
 		return (0); // check if it handles null
-	// Qgrqndir la map si pas de solution (partie du plus petit);
+	map_size = ft_sqrt(pieces->nb_of_pieces) * 2;	
 	while (!sol_found)
 	{
 		if (!(map = ft_create_map(map_size)))
@@ -192,9 +225,6 @@ int				ft_resolver(char *input)
 		if (!sol_found)
 			map_size++;
 	}
-	if (sol_found)
-		ft_print_map(map->map, map_size);
-	else
-		ft_putstr("error\n");
+	ft_print_map(map->map, map_size);
 	return (1);
 }
