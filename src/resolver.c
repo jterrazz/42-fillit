@@ -6,7 +6,7 @@
 /*   By: jterrazz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 17:45:34 by jterrazz          #+#    #+#             */
-/*   Updated: 2017/04/18 19:40:29 by jterrazz         ###   ########.fr       */
+/*   Updated: 2017/04/18 19:56:13 by jterrazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,17 +177,24 @@ int				ft_resolver(char *input)
 	t_map		*map;
 	t_pieces	*pieces;
 	int			sol_found;
+	int			map_size;
 
+	map_size = 2;	
 	sol_found = 0;
 	if (!(pieces = ft_get_pieces(input)))
 		return (0); // check if it handles null
 	// Qgrqndir la map si pas de solution (partie du plus petit);
-	if (!(map = ft_create_map(4)))
-		return (0);
-	ft_put_pieces(map, pieces, 0, &sol_found);
+	while (!sol_found)
+	{
+		if (!(map = ft_create_map(map_size)))
+			return (0);
+		ft_put_pieces(map, pieces, 0, &sol_found);
+		if (!sol_found)
+			map_size++;
+	}
 	if (sol_found)
-		ft_print_map(map->map, 4);
+		ft_print_map(map->map, map_size);
 	else
-		ft_putstr("error pas de sol\n");
+		ft_putstr("error\n");
 	return (1);
 }
