@@ -6,7 +6,7 @@
 /*   By: jterrazz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 17:45:34 by jterrazz          #+#    #+#             */
-/*   Updated: 2017/04/18 17:35:50 by jterrazz         ###   ########.fr       */
+/*   Updated: 2017/04/18 17:43:49 by jterrazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,18 +135,36 @@ int				ft_place(t_map *map, t_case *piece, int i_map)
 	{
 		x = x_map + piece[i].x;
 		y = y_map + piece[i].y;
-		if (map[x + y * map.size] != '.' && x < map.size - 1 && y < map.size)
-			map[x + y * map.size] = piece[0].letter;
-		else
+		if (map[x + y * map.size] != '.' && x >= map.size - 1 && y >= map.size)
 			return (0);
+		i++;
+	}
+	i = 0;
+	while (i < 4)
+	{
+		x = x_map + piece[i].x;
+		y = y_map + piece[i].y;
+		map[x + y * map.size] = piece[0].letter;
 		i++;
 	}
 	return (1);
 }
 
-int				ft_clean(t_map *map, int nb_piece)
+int				ft_clean(t_map *map, t_case *piece, i_map)
 {
+	int x_map;
+	int y_max;
 
+	x_map = i_map % map.size;
+	y_map = i_map / map.size;
+	i = 0;
+	while (i < 4)
+	{
+		x = x_map + piece[i].x;
+		y = y_map + piece[i].y;
+		map[x + y * map.size] = '.';
+		i++;
+	}
 	return (0);
 }
 
