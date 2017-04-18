@@ -6,7 +6,7 @@
 /*   By: jterrazz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 17:45:34 by jterrazz          #+#    #+#             */
-/*   Updated: 2017/04/18 19:11:18 by jterrazz         ###   ########.fr       */
+/*   Updated: 2017/04/18 19:40:29 by jterrazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,18 +105,6 @@ t_pieces		*ft_get_pieces(char *input)
 		return (0);
 	ft_set_pieces(pieces, input);
 	ft_optimize_pieces(pieces);
-
-	printf("Il y a %i pieces\n", pieces->nb_of_pieces); //DELLLLLLLLLLLLLL
-	printf("%i, %i\n", pieces->pieces[0][0].x, pieces->pieces[0][0].y);
-	printf("%i, %i\n", pieces->pieces[0][1].x, pieces->pieces[0][1].y);
-	printf("%i, %i\n", pieces->pieces[0][2].x, pieces->pieces[0][2].y);
-	printf("%i, %i\n", pieces->pieces[0][3].x, pieces->pieces[0][3].y);
-
-	printf("%i, %i\n", pieces->pieces[1][0].x, pieces->pieces[1][0].y);
-	printf("%i, %i\n", pieces->pieces[1][1].x, pieces->pieces[1][1].y);
-	printf("%i, %i\n", pieces->pieces[1][2].x, pieces->pieces[1][2].y);
-	printf("%i, %i\n", pieces->pieces[1][3].x, pieces->pieces[1][3].y);
-
 	return (pieces);
 }
 
@@ -150,32 +138,23 @@ int				ft_place(t_map *map, t_case *piece, int i_map)
 	return (1);
 }
 
-int				ft_clean(t_map *map, t_case *piece, int i_map)
+void	ft_clean(t_map *map, char c)
 {
-	int x_map;
-	int y_map;
-	int x;
-	int y;
 	int i;
 
-	x_map = i_map % map->size;
-	y_map = i_map / map->size;
 	i = 0;
-	while (i < 4)
+	while (map->map[i])
 	{
-		x = x_map + piece[i].x;
-		y = y_map + piece[i].y;
-		map->map[x + y * map->size] = '.';
+		if (map->map[i] == c)
+			map->map[i] = '.';
 		i++;
 	}
-	return (0);
 }
 
 void			ft_put_pieces(t_map *map, t_pieces *pieces, int nb_pieces, int *sol_found)
 {
 	int		i_map;
 	int		size_sq;
-	int		was_placed;
 
 	if (nb_pieces == pieces->nb_of_pieces)
 		*sol_found = 1;
@@ -185,15 +164,11 @@ void			ft_put_pieces(t_map *map, t_pieces *pieces, int nb_pieces, int *sol_found
 	size_sq = map->size * map->size;
 	while (i_map < size_sq && !(*sol_found))
 	{
-		was_placed = 0;
-		if ((was_placed = ft_place(map, pieces->pieces[nb_pieces], i_map))) // Renvois 0 si pas possible
+		if (ft_place(map, pieces->pieces[nb_pieces], i_map)) // Renvois 0 si pas possible
 			ft_put_pieces(map, pieces, nb_pieces + 1, sol_found);
-		if (was_placed && !sol_found)
-			ft_clean(map, pieces->pieces[nb_pieces], i_map);
+		if (!(*sol_found))
+			ft_clean(map, pieces->pieces[nb_pieces][0].letter);
 		i_map++;
-
-			ft_print_map(map->map, 4);
-			ft_putchar('\n');
 	}
 }
 
