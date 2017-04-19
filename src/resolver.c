@@ -6,7 +6,7 @@
 /*   By: jterrazz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 17:45:34 by jterrazz          #+#    #+#             */
-/*   Updated: 2017/04/19 14:53:48 by plogan           ###   ########.fr       */
+/*   Updated: 2017/04/19 15:03:45 by jterrazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_pieces		*ft_get_pieces(char *input)
 {
 	int			i;
-	int			count;
+	uint8_t		count;
 	t_pieces	*pieces;
 
 	i = 0;
@@ -37,13 +37,13 @@ t_pieces		*ft_get_pieces(char *input)
 	return (pieces);
 }
 
-int				ft_place(t_map *map, t_case *piece, int i_map)
+int				ft_place(t_map *map, t_case *piece, uint8_t i_map)
 {
-	int			x_map;
-	int			y_map;
-	int			i;
-	int			x;
-	int			y;
+	uint8_t			x_map;
+	uint8_t			y_map;
+	uint8_t			i;
+	uint8_t			x;
+	uint8_t			y;
 
 	i = 0;
 	x_map = i_map % map->size;
@@ -66,13 +66,13 @@ int				ft_place(t_map *map, t_case *piece, int i_map)
 	return (1);
 }
 
-void			ft_clean(t_map *map, t_case *piece, int i_map)
+void			ft_clean(t_map *map, t_case *piece, uint8_t i_map)
 {
-	int			x_map;
-	int			y_map;
-	int			i;
-	int			x;
-	int			y;
+	uint8_t			x_map;
+	uint8_t			y_map;
+	uint8_t			i;
+	uint8_t			x;
+	uint8_t			y;
 
 	i = 0;
 	x_map = i_map % map->size;
@@ -89,7 +89,7 @@ void			ft_clean(t_map *map, t_case *piece, int i_map)
 
 void			ft_put_pieces(t_map *map, t_pieces *pieces, int nb_pieces, int *sol_found)
 {
-	int			i_map;
+	uint8_t		i_map;
 	int			size_sq;
 
 	if (nb_pieces == pieces->nb_of_pieces)
@@ -112,8 +112,8 @@ int				ft_resolver(char *input)
 {
 	t_map		*map;
 	t_pieces	*pieces;
-	int			sol_found;
-	int			map_size;
+	uint8_t		sol_found;
+	uint8_t			map_size;
 
 	sol_found = 0;
 	if (!(pieces = ft_get_pieces(input)))
