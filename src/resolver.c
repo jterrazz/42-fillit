@@ -6,7 +6,7 @@
 /*   By: jterrazz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 17:45:34 by jterrazz          #+#    #+#             */
-/*   Updated: 2017/04/19 15:03:45 by jterrazz         ###   ########.fr       */
+/*   Updated: 2017/04/19 15:06:32 by jterrazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void			ft_clean(t_map *map, t_case *piece, uint8_t i_map)
 	}
 }
 
-void			ft_put_pieces(t_map *map, t_pieces *pieces, int nb_pieces, int *sol_found)
+void			ft_put_pieces(t_map *map, t_pieces *pieces, uint8_t nb_pieces, uint8_t *sol_found)
 {
 	uint8_t		i_map;
 	int			size_sq;
