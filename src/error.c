@@ -6,7 +6,7 @@
 /*   By: jterrazz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 14:18:57 by jterrazz          #+#    #+#             */
-/*   Updated: 2017/04/19 15:09:03 by jterrazz         ###   ########.fr       */
+/*   Updated: 2017/04/19 16:40:19 by jterrazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 void	ft_usage(void)
 {
-	ft_putstr("usage : debrouille toi pour utiliser cette merde\n");
+	ft_putstr("usage : fillit source_file\n");
 }
+
