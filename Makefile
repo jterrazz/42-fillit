@@ -6,7 +6,7 @@
 #    By: jterrazz <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/17 14:21:01 by jterrazz          #+#    #+#              #
-#    Updated: 2017/04/19 18:38:49 by plogan           ###   ########.fr        #
+#    Updated: 2017/04/19 18:58:07 by plogan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,10 @@ CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME):
+%.o: $(SRC_PATH)/%.c
+	gcc -c $(CFLAGS) -o $@ $<
+
+$(NAME): $(OFILES)
 	@$(CC) $(CFLAGS) -c $(SRC) $(CLIBFILES)
 	@$(CC) $(CFLAGS) -o $(NAME) $(SRC) $(CLIBFILES)
 	@echo "Compilation:\033[92m OK\033[0m"
