@@ -6,13 +6,13 @@
 /*   By: jterrazz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 14:05:46 by jterrazz          #+#    #+#             */
-/*   Updated: 2017/04/18 19:58:36 by jterrazz         ###   ########.fr       */
+/*   Updated: 2017/04/19 13:41:54 by plogan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
 	char *input;
 
