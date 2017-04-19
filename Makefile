@@ -6,15 +6,18 @@
 #    By: jterrazz <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/17 14:21:01 by jterrazz          #+#    #+#              #
-#    Updated: 2017/04/19 16:04:30 by jterrazz         ###   ########.fr        #
+#    Updated: 2017/04/19 18:38:49 by plogan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 
-SRC = src/fillit.c src/printer.c src/reader.c src/checker.c \
-	  src/error.c src/resolver.c src/create_map.c src/get_pieces.c \
-	  src/optimize_pieces.c
+SRC_PATH = ./src
+
+SRC_NAME = fillit.c printer.c reader.c checker.c error.c resolver.c \
+		   create_map.c get_pieces.c optimize_pieces.c
+
+SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 
 LIBFILES = ft_lstiter.c ft_putendl.c ft_striter.c ft_strequ.c\
 	ft_lstmap.c ft_putendl_fd.c ft_striteri.c ft_strrchr.c \
@@ -34,16 +37,23 @@ CLIBFILES = $(addprefix libft/, $(LIBFILES))
 
 OFILES = $(subst src/,,$(SRC:.c=.o)) $(LIBFILES:.c=.o)
 
+CC = gcc
+
+CFLAGS = -Wall -Wextra -Werror
+
 all: $(NAME)
 
 $(NAME):
-	gcc -Wall -Wextra -Werror -c $(SRC) $(CLIBFILES)
-	gcc -Wall -Wextra -Werror -o $(NAME) $(SRC) $(CLIBFILES)
+	@$(CC) $(CFLAGS) -c $(SRC) $(CLIBFILES)
+	@$(CC) $(CFLAGS) -o $(NAME) $(SRC) $(CLIBFILES)
+	@echo "Compilation:\033[92m OK\033[0m"
 
 clean:
-	rm -rf $(OFILES)
+	@rm -rf $(OFILES)
+	@echo "Deleting:\033[33m $(OFILES)\033[0m"
 
 fclean: clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
+	@echo "Deleting:\033[33m $(NAME)\033[0m"
 
 re : fclean all
