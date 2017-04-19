@@ -6,7 +6,7 @@
 /*   By: jterrazz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 14:06:45 by jterrazz          #+#    #+#             */
-/*   Updated: 2017/04/19 15:05:43 by jterrazz         ###   ########.fr       */
+/*   Updated: 2017/04/19 15:08:39 by jterrazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void			ft_usage(void);
 char			*ft_get_input(char *filename);
 int				ft_check_input(char *input);
 int				ft_resolver(char *input);
-void			ft_print_map(char *str, int size);
 void			ft_print_map(char *str, int size);
 int				ft_set_pieces(t_pieces *pieces, char *input);
 
