@@ -6,7 +6,7 @@
 /*   By: jterrazz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 14:05:46 by jterrazz          #+#    #+#             */
-/*   Updated: 2017/04/19 13:41:54 by plogan           ###   ########.fr       */
+/*   Updated: 2017/04/19 15:17:46 by jterrazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int		main(int argc, char **argv)
 		}
 		if (!ft_resolver(input))
 			return (0);
+		free(input);
 	}
 	else
 		ft_usage();

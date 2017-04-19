@@ -6,7 +6,7 @@
 /*   By: jterrazz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 16:15:17 by jterrazz          #+#    #+#             */
-/*   Updated: 2017/04/19 13:41:22 by plogan           ###   ########.fr       */
+/*   Updated: 2017/04/19 15:12:19 by jterrazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ static int		hash_is_valid(char *str, int i)
 	x = i % 5;
 	y = i / 5;
 	if (x != 0 && str[i - 1] == '#')
-		count++;
+		++count;
 	if (x != 3 && str[i + 1] == '#')
-		count++;
+		++count;
 	if (y != 0 && str[i - 5] == '#')
-		count++;
+		++count;
 	if (y != 3 && str[i + 5] == '#')
-		count++;
+		++count;
 	return (count);
 }
 
@@ -55,12 +55,12 @@ static int		is_piece(char *str)
 			nb_hash++;
 		}
 		if (str[k] == '.' || str[k] == '#')
-			i++;
+			++i;
 		else if (str[k] == '\n' && i == 4)
 			i = 0;
 		else
 			return (0);
-		k++;
+		++k;
 	}
 	if (nb_hash != 4 || nb_next < 6)
 		return (0);
@@ -90,7 +90,7 @@ int				ft_check_input(char *input)
 			if (input[i] != '\n')
 				return (0);
 		}
-		i++;
+		++i;
 	}
 	return (1);
 }

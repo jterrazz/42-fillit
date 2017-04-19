@@ -6,7 +6,7 @@
 /*   By: jterrazz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 17:45:34 by jterrazz          #+#    #+#             */
-/*   Updated: 2017/04/19 15:06:32 by jterrazz         ###   ########.fr       */
+/*   Updated: 2017/04/19 15:17:15 by jterrazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ t_pieces		*ft_get_pieces(char *input)
 	while (input[i])
 	{
 		if (i % 21 == 0)
-			count++;
-		i++;
+			++count;
+		++i;
 	}
 	pieces->nb_of_pieces = count;
 	pieces->pieces = (t_case **)malloc(sizeof(t_case *) * count);
@@ -54,11 +54,11 @@ int				ft_place(t_map *map, t_case *piece, uint8_t i_map)
 		y = y_map + piece[i].y;
 		if (map->map[x + y * map->size] != '.' || x >= map->size || y >= map->size)
 			return (0);
-		i++;
+		++i;
 	}
 	while (i > 0)
 	{
-		i--;
+		--i;
 		x = x_map + piece[i].x;
 		y = y_map + piece[i].y;
 		map->map[x + y * map->size] = piece[0].letter;
@@ -83,7 +83,7 @@ void			ft_clean(t_map *map, t_case *piece, uint8_t i_map)
 		y = y_map + piece[i].y;
 		if (map->map[x + y * map->size] == piece[0].letter)
 			map->map[x + y * map->size] = '.';
-		i++;
+		++i;
 	}
 }
 
@@ -104,7 +104,7 @@ void			ft_put_pieces(t_map *map, t_pieces *pieces, uint8_t nb_pieces, uint8_t *s
 			ft_put_pieces(map, pieces, nb_pieces + 1, sol_found);
 		if (*sol_found == 0)
 			ft_clean(map, pieces->pieces[nb_pieces], i_map);
-		i_map++;
+		++i_map;
 	}
 }
 
@@ -125,8 +125,13 @@ int				ft_resolver(char *input)
 			return (0);
 		ft_put_pieces(map, pieces, 0, &sol_found);
 		if (!sol_found)
-			map_size++;
+		{
+			free(map);
+			++map_size;
+		}
 	}
 	ft_print_map(map->map, map_size);
+	free(pieces);
+	free(map);
 	return (1);
 }

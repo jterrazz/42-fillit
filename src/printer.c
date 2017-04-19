@@ -6,7 +6,7 @@
 /*   By: jterrazz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 19:29:20 by jterrazz          #+#    #+#             */
-/*   Updated: 2017/04/18 17:52:19 by jterrazz         ###   ########.fr       */
+/*   Updated: 2017/04/19 15:12:46 by jterrazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	ft_print_map(char *str, int size)
 			j = 0;
 		}
 		ft_putchar(str[i]);
-		j++;
-		i++;
+		++j;
+		++i;
 	}
 	ft_putchar('\n');
 }
