@@ -6,7 +6,7 @@
 /*   By: jterrazz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 17:45:34 by jterrazz          #+#    #+#             */
-/*   Updated: 2017/04/19 11:36:59 by jterrazz         ###   ########.fr       */
+/*   Updated: 2017/04/19 12:14:18 by jterrazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,7 +188,7 @@ int				ft_sqrt(int n)
 		return (1);
 	while (i * i < n)
 		i++;
-	return (i - 1);
+	return (i);
 }
 
 int				ft_resolver(char *input)
