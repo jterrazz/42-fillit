@@ -6,7 +6,7 @@
 /*   By: jterrazz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 17:45:34 by jterrazz          #+#    #+#             */
-/*   Updated: 2017/04/18 21:15:47 by jterrazz         ###   ########.fr       */
+/*   Updated: 2017/04/19 11:36:59 by jterrazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,29 +127,15 @@ int				ft_place(t_map *map, t_case *piece, int i_map)
 			return (0);
 		i++;
 	}
-	i = 0;
-	while (i < 4)
+	while (i > 0)
 	{
+		i--;
 		x = x_map + piece[i].x;
 		y = y_map + piece[i].y;
 		map->map[x + y * map->size] = piece[0].letter;
-		i++;
 	}
 	return (1);
 }
-
-//void	ft_clean(t_map *map, char c)
-//{
-//	int i;
-//
-//	i = 0;
-//	while (map->map[i])
-//	{
-//		if (map->map[i] == c)
-//			map->map[i] = '.';
-//		i++;
-//	}
-//}
 
 void	ft_clean(t_map *map, t_case *piece, int i_map)
 {
@@ -189,7 +175,6 @@ void			ft_put_pieces(t_map *map, t_pieces *pieces, int nb_pieces, int *sol_found
 			ft_put_pieces(map, pieces, nb_pieces + 1, sol_found);
 		if (*sol_found == 0)
 			ft_clean(map, pieces->pieces[nb_pieces], i_map);
-		//	ft_clean(map, pieces->pieces[nb_pieces][0].letter);
 		i_map++;
 	}
 }
