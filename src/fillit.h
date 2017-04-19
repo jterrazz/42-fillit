@@ -6,15 +6,12 @@
 /*   By: jterrazz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 14:06:45 by jterrazz          #+#    #+#             */
-/*   Updated: 2017/04/19 15:08:39 by jterrazz         ###   ########.fr       */
+/*   Updated: 2017/04/19 16:03:48 by jterrazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
-
-// freeeeeeeee
-// convert local ft to static
 
 # include "../libft/libft.h"
 # include <unistd.h>
@@ -47,6 +44,6 @@ char			*ft_get_input(char *filename);
 int				ft_check_input(char *input);
 int				ft_resolver(char *input);
 void			ft_print_map(char *str, int size);
-int				ft_set_pieces(t_pieces *pieces, char *input);
+t_pieces		*ft_get_pieces(char *input);
 
 #endif

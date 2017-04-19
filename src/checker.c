@@ -6,18 +6,19 @@
 /*   By: jterrazz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 16:15:17 by jterrazz          #+#    #+#             */
-/*   Updated: 2017/04/19 15:12:19 by jterrazz         ###   ########.fr       */
+/*   Updated: 2017/04/19 15:52:22 by jterrazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static int		hash_is_valid(char *str, int i)
+static int		hash_is_valid(char *str, int i, int *nb_next, int *nb_hash)
 {
 	int		x;
 	int		y;
 	int		count;
 
+	*nb_hash = *nb_hash + 1;
 	count = 0;
 	x = i % 5;
 	y = i / 5;
@@ -29,6 +30,7 @@ static int		hash_is_valid(char *str, int i)
 		++count;
 	if (y != 3 && str[i + 5] == '#')
 		++count;
+	*nb_next += count;
 	return (count);
 }
 
@@ -38,7 +40,6 @@ static int		is_piece(char *str)
 	int		k;
 	int		i;
 	int		nb_next;
-	int		temp;
 
 	nb_hash = 0;
 	i = 0;
@@ -46,14 +47,8 @@ static int		is_piece(char *str)
 	nb_next = 0;
 	while (k < 20)
 	{
-		if (str[k] == '#')
-		{
-			temp = hash_is_valid(str, k);
-			if (temp == 0)
-				return (0);
-			nb_next += temp;
-			nb_hash++;
-		}
+		if (str[k] == '#' && !hash_is_valid(str, k, &nb_next, &nb_hash))
+			return (0);
 		if (str[k] == '.' || str[k] == '#')
 			++i;
 		else if (str[k] == '\n' && i == 4)
@@ -78,11 +73,8 @@ int				ft_check_input(char *input)
 		return (0);
 	while (input[i])
 	{
-		if (i % 21 == 0)
-		{
-			if (!is_piece(&input[i]))
-				return (0);
-		}
+		if (!(i % 21) && !is_piece(&input[i]))
+			return (0);
 		else if (i % 21 == 20)
 		{
 			if (input[i] == '\n' && i == len - 1)

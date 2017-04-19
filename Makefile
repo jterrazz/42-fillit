@@ -6,14 +6,14 @@
 #    By: jterrazz <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/17 14:21:01 by jterrazz          #+#    #+#              #
-#    Updated: 2017/04/19 14:51:16 by plogan           ###   ########.fr        #
+#    Updated: 2017/04/19 16:04:30 by jterrazz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 
 SRC = src/fillit.c src/printer.c src/reader.c src/checker.c \
-	  src/error.c src/resolver.c src/create_map.c src/set_pieces.c \
+	  src/error.c src/resolver.c src/create_map.c src/get_pieces.c \
 	  src/optimize_pieces.c
 
 LIBFILES = ft_lstiter.c ft_putendl.c ft_striter.c ft_strequ.c\
