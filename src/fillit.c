@@ -6,7 +6,7 @@
 /*   By: jterrazz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 14:05:46 by jterrazz          #+#    #+#             */
-/*   Updated: 2017/04/19 15:52:07 by jterrazz         ###   ########.fr       */
+/*   Updated: 2017/04/20 17:23:00 by jterrazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int		main(int argc, char **argv)
 			return (0);
 		if (!ft_check_input(input))
 		{
+			free(input);
 			ft_putstr("error\n");
 			return (0);
 		}
