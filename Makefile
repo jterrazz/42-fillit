@@ -6,7 +6,7 @@
 #    By: jterrazz <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/17 14:21:01 by jterrazz          #+#    #+#              #
-#    Updated: 2017/04/20 11:50:31 by plogan           ###   ########.fr        #
+#    Updated: 2017/04/20 12:24:08 by plogan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,9 +36,9 @@ LIB_NAME = ft_lstiter.c ft_putendl.c ft_striter.c ft_strequ.c\
 
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 
-LIB = $(addprefix $(LIB_PATH)/, $(LIB_NAME))
+LIB = $(addprefix $(LIB_PATH)/,$(LIB_NAME))
 
-OFILES = $($(SRC:.c=.o)) $(LIB_NAME:.c=.o)
+OFILES = $(SRC_NAME:.c=.o) $(LIB_NAME:.c=.o)
 
 CC = gcc
 
