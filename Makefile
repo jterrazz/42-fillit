@@ -6,7 +6,7 @@
 #    By: jterrazz <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/17 14:21:01 by jterrazz          #+#    #+#              #
-#    Updated: 2017/04/20 17:08:52 by jterrazz         ###   ########.fr        #
+#    Updated: 2017/04/20 17:27:44 by jterrazz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ all: $(NAME)
 
 $(NAME): $(OFILES)
 	@make -C libft/ all
-	@$(CC) $(CFLAGS) -o $(NAME) -I ./libft/lift.h $(OFILES) ./libft/libft.a
+	@$(CC) $(CFLAGS) -o $(NAME) $(OFILES) ./libft/libft.a
 	@echo "Compilation:\033[92m OK\033[0m"
 
 %.o: $(SRC_PATH)/%.c
