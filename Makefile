@@ -6,7 +6,7 @@
 #    By: jterrazz <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/17 14:21:01 by jterrazz          #+#    #+#              #
-#    Updated: 2017/04/19 18:58:07 by plogan           ###   ########.fr        #
+#    Updated: 2017/04/20 11:50:31 by plogan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,13 @@ NAME = fillit
 
 SRC_PATH = ./src
 
+LIB_PATH = ./libft
+
 SRC_NAME = fillit.c printer.c reader.c checker.c error.c resolver.c \
 		   create_map.c get_pieces.c optimize_pieces.c
 
-SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 
-LIBFILES = ft_lstiter.c ft_putendl.c ft_striter.c ft_strequ.c\
+LIB_NAME = ft_lstiter.c ft_putendl.c ft_striter.c ft_strequ.c\
 	ft_lstmap.c ft_putendl_fd.c ft_striteri.c ft_strrchr.c \
 	ft_atoi.c ft_lstnew.c ft_putnbr.c ft_strjoin.c ft_strsplit.c \
 	ft_bzero.c ft_memalloc.c ft_putnbr_fd.c ft_strlcat.c ft_strstr.c \
@@ -33,9 +34,11 @@ LIBFILES = ft_lstiter.c ft_putendl.c ft_striter.c ft_strequ.c\
 	ft_lstdel.c ft_putchar.c ft_strdel.c ft_strnew.c \
 	ft_lstdelone.c ft_putchar_fd.c ft_strdup.c ft_strnstr.c ft_sqrt.c
 
-CLIBFILES = $(addprefix libft/, $(LIBFILES))
+SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 
-OFILES = $(subst src/,,$(SRC:.c=.o)) $(LIBFILES:.c=.o)
+LIB = $(addprefix $(LIB_PATH)/, $(LIB_NAME))
+
+OFILES = $($(SRC:.c=.o)) $(LIB_NAME:.c=.o)
 
 CC = gcc
 
@@ -43,12 +46,9 @@ CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-%.o: $(SRC_PATH)/%.c
-	gcc -c $(CFLAGS) -o $@ $<
-
-$(NAME): $(OFILES)
-	@$(CC) $(CFLAGS) -c $(SRC) $(CLIBFILES)
-	@$(CC) $(CFLAGS) -o $(NAME) $(SRC) $(CLIBFILES)
+$(NAME):
+	@$(CC) $(CFLAGS) -c $(SRC) $(LIB)
+	@$(CC) $(CFLAGS) -o $(NAME) $(SRC) $(LIB)
 	@echo "Compilation:\033[92m OK\033[0m"
 
 clean:
