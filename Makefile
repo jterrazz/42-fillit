@@ -6,7 +6,7 @@
 #    By: jterrazz <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/17 14:21:01 by jterrazz          #+#    #+#              #
-#    Updated: 2017/04/20 12:24:08 by plogan           ###   ########.fr        #
+#    Updated: 2017/04/20 17:08:52 by jterrazz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,6 @@ LIB_PATH = ./libft
 
 SRC_NAME = fillit.c printer.c reader.c checker.c error.c resolver.c \
 		   create_map.c get_pieces.c optimize_pieces.c
-
 
 LIB_NAME = ft_lstiter.c ft_putendl.c ft_striter.c ft_strequ.c\
 	ft_lstmap.c ft_putendl_fd.c ft_striteri.c ft_strrchr.c \
@@ -38,7 +37,7 @@ SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 
 LIB = $(addprefix $(LIB_PATH)/,$(LIB_NAME))
 
-OFILES = $(SRC_NAME:.c=.o) $(LIB_NAME:.c=.o)
+OFILES = $(SRC_NAME:.c=.o)
 
 CC = gcc
 
@@ -46,17 +45,24 @@ CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME):
-	@$(CC) $(CFLAGS) -c $(SRC) $(LIB)
-	@$(CC) $(CFLAGS) -o $(NAME) $(SRC) $(LIB)
+$(NAME): $(OFILES)
+	@make -C libft/ all
+	@$(CC) $(CFLAGS) -o $(NAME) -I ./libft/lift.h $(OFILES) ./libft/libft.a
 	@echo "Compilation:\033[92m OK\033[0m"
 
+%.o: $(SRC_PATH)/%.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+
 clean:
+	@make -C libft/ clean
 	@rm -rf $(OFILES)
-	@echo "Deleting:\033[33m $(OFILES)\033[0m"
+	@echo "Deleting:\n\033[33m $(OFILES)\033[0m"
 
 fclean: clean
+	@make -C libft/ fclean
 	@rm -rf $(NAME)
-	@echo "Deleting:\033[33m $(NAME)\033[0m"
+	@echo "Deleting:\n\033[33m $(NAME)\033[0m"
 
 re : fclean all
+
+.PHONY: all clean fclean re
